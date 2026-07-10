@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class ContomButton extends StatelessWidget {
-  const ContomButton({super.key, this.onTap});
+  const ContomButton({super.key, this.onTap,this.isLoading = false});
   final void Function()? onTap;
+  final bool isLoading ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,8 +18,10 @@ class ContomButton extends StatelessWidget {
             color:kprimaryColor,
             borderRadius: BorderRadius.circular(8)
         ),
-        child:const Center(
-          child: Text('Add', style: TextStyle(color: Colors.black,fontSize: 18)),
+        child: Center(
+          child: isLoading
+              ? CircularProgressIndicator(color: Colors.black,)
+              : Text('Add', style: TextStyle(color: Colors.black, fontSize: 18)),
         ),
       ),
     );
